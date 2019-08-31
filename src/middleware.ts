@@ -275,13 +275,7 @@ export function createMiddleware(getClient: () => LanguageClient): IntelephenseM
     }
 
     function mergeAssociations(intelephenseAssociations:string[]) {
-        let vscodeAssociations = workspace.getConfiguration('files').get('associations') || { };
         let associationsSet = new Set<string>(intelephenseAssociations);
-        for(let [key, val] of Object.entries(vscodeAssociations)) {
-            if(val === 'php') {
-                associationsSet.add(key);
-            }
-        }
         return Array.from(associationsSet);
     }
 
@@ -290,7 +284,7 @@ export function createMiddleware(getClient: () => LanguageClient): IntelephenseM
         if(resource) {
             resourceUri = Uri.parse(resource);
         }
-        let vscodeExclude = workspace.getConfiguration('files', resourceUri || null).get('exclude') || { };
+        let vscodeExclude = {'**/.git/**': true, '**/.svn/**': true, '**/.hg/**': true, '**/CVS/**': true, '**/.DS_Store/**': true, '**/node_modules/**': true, '**/bower_components/**': true, '**/vendor/**/{Test,test,Tests,tests}/**': true};
         let excludeSet = new Set<string>(intelephenseExclude);
         for(let [key, val] of Object.entries(vscodeExclude)) {
             if(val) {
@@ -324,7 +318,7 @@ export function createMiddleware(getClient: () => LanguageClient): IntelephenseM
                                 v.files.exclude = mergeExclude(v.files.exclude, params.items[i].scopeUri);
                             }
                             if(v && v.telemetry === null) {
-                                v.telemetry.enabled = workspace.getConfiguration('telemetry').get('enableTelemetry');
+                                v.telemetry.enabled = false;
                             }
                         });
                     }
