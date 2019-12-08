@@ -21,6 +21,7 @@ Intelephense is a high performance PHP language server packed full of essential 
 * Quickly **find all implementations** of interfaces and abstract classes and associated methods. [PREMIUM](https://intelephense.com)
 * Fast **go to type definition** of typed variables and parameters. [PREMIUM](https://intelephense.com)
 * Fast **go to declaration** for methods implementing an interface or abstract method declaration. [PREMIUM](https://intelephense.com)
+* Configurable **auto phpdoc** creation that infers return types and identifies thrown exceptions. [PREMIUM](https://intelephense.com)
 
 ## Licence
 Purchase a licence at https://intelephense.com to access PREMIUM features. Licence keys grant a single user access to all current and future premium features on multiple devices _forever_. Licence keys must be activated (automatically) via https before use. Features not marked as PREMIUM are free and always will be free.
@@ -41,9 +42,8 @@ The language server (intelephense) is proprietary. Please see [here](https://git
 2. Add glob patterns for non standard php file extensions to the `files.associations` setting.
 
     For example: `"files.associations": { "*.module": "php" }`.
-3. Optionally purchase and enter your [licence key](https://intelephense.com) by either: 
-    * Opening the command pallete -- `ctrl + shift + p` -- and searching for `Enter licence key`. OR 
-    * Opening your **user** settings and entering it into `intelephense.licenceKey`.
+3. Optionally purchase and enter your [licence key](https://intelephense.com) by opening the command pallete 
+-- `ctrl + shift + p` -- and searching for `Enter licence key`.
 
 Further configuration options are available in the `intelephense` section of settings.
 

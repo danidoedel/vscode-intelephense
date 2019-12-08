@@ -1,5 +1,80 @@
 # Change Log
 
+## [1.3.2 - 2019-12-06]
+
+#### Changed
+- Relaxed type checking so that it behaves as in 1.2.
+- Moved licence key storage from config to global memento.
+- Unused catch clause variable diagnostic suppressed.
+- removed interbase, wddx, recode from default stubs.
+- Changed default file exclude pattern to `**/vendor/**/{Tests,tests}/**` to not exclude frmaework test classes.
+
+#### Fixed
+- False undefined var in arrow functions.
+- phpstorm meta not working when map contains empty string key.
+- variable type lost when in single if statements.
+- False type error expected type callable. Found callable.
+- Types not assigned in short array destructure syntax.
+- Type inference breaking in logical and/or expression type guards.
+- Type inference breaking in yoda conditions.
+- Flashing diagnostics in problem tab.
+- HTML/JS/CSS language intelligence not working in some files.
+- Phpdoc completion above variable creating function docblock.
+
+## [1.3.1 - 2019-12-04]
+
+#### Fixed
+- False undefined methods when `__call` and/or `__callStatic` is implemented.
+- Arrow functions failing to parse correctly when defined in argument lists.
+- Arrow function return type always void.
+- Javascript completion not working.
+- Union type comparison always failing.
+- unary + and - expr should return specific type if possible.
+
+## [1.3.0 - 2019-12-03]
+
+#### Added
+- PHP 7.4 support.
+- Config to enable/disable diagnostics and diagnostic categories.
+- Config to set target PHP version.
+- Undefined Type, function, constant, member diagnostic errors.
+- Deprecated diagnostic hints.
+- Support for running diagnostics `onSave`.
+- Auto phpdoc creation. Triggered by `/**`. **PREMIUM**
+
+#### Changed
+- HTML/JS/CSS language service moved to server.
+- `@global` annotation support removed.
+- Improved sorting of suggestions.
+- Namespace now shows in completion suggestion label in cases where there are similarly named items.
+- `false` and `true` no longer generalised to `bool`.
+- Improved type inference. Expressions like `($a)`, `($a === null)`, `($a === false)` now supported. 
+- Global or script level variables must be explicitly `include`d or imported with `global`. 
+Previously, attempts were made to look up types of script scoped variables always leading to many irrelevant lookups in view files. 
+- Undeclared variables are now given a type of `unset` instead of `mixed`.
+- Improved merging of declared types and phpdoc types so as to not lose more specific type information.
+- Definition requests now use `LocationLink`.
+- Updated stubs.
+- Type checking is more strict for union types. Previously any type could match, now all types must match.
+
+#### Fixed
+- Extra parentheses added when accepting completion suggestion within existing invocation.
+- False scalar type errors when `strict_type=1` is not declared in file.
+- False type error when object has `_toString` implementation.
+- No variables imported from `include` when inside function/method body.
+- Variable type lost if assigned in a control expression.
+- False undefined variable diagnostic for self referencing anonymous functions.
+- False undefined variable diagnostic on left hand side of `??`.
+- No completion suggestions when chaining `ArrayAccess`.
+- Types getting lost when assigning array elements.
+- Empty type when hovering property declaration.
+- Completion suggestion types not accurate and different to type seen in hover.
+- Type narrowing now considers `die`, `throw`, `exit` as terminating.
+- Namespace definition breaking type inference.
+- Abstract methods being inferred as `void`.
+- Autocomplete adds `\` to `void`
+- Heredoc not recognised as string.
+
 ## [1.2.3 - 2019-09-04]
 
 #### Fixed
